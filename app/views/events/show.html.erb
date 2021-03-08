@@ -1,23 +1,10 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<h1>Articles</h1>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @event.body %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<ul>
+  <% @event.each do |article| %>
+    <li>
+      <%= article.title %>
+    </li>
+  <% end %>
+</ul>
