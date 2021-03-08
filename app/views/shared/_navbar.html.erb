@@ -1,25 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-     
-<% if Current.user %>
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= Current.user.username %></a>
-    <%= button_to "Sign Out", logout_path, method: :delete, class: "btn btn-secondary" %>
-  <% else %>
-    <%= button_to "Log In", sign_in_path, class: "btn btn-success" %>
-    <%= button_to "Sign Up", sign_up_path, class: "btn btn-info" %>
+        <% if Current.user %>
+          
+
+          <span class="navbar-text">
+            <%= Current.user.username %>
+          </span>
+
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-secondary" %> 
+          
+          </li>
+
+          <% else %>
+            <a class="nav-item">
+              <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
+            </a>
+
+            <a class="nav-link">
+              <%= link_to "Login", sign_in_path, class: "nav-link" %>
+            </a>
 
 
-<% end %>
-
-
-
-
+          <% end %>
 
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
 </nav>
