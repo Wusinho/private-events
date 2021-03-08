@@ -4,6 +4,9 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+    end
   end
 
   # GET /events/1 or /events/1.json

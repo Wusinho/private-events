@@ -1,8 +1,6 @@
-<h1>Welcome to Events</h1>
+<h1>Welcome to Eventos</h1>
 
-<div>
-  <% if @user %>
-    Logged in as <%= @user.username %>
+ <% if @user %>
+    <%= @user.username %>
+    <%= button_to "Logout", logout_path, method: :delete %>
   <% end %>
-
-</div>
