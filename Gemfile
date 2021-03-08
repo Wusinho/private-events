@@ -21,7 +21,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'better_errors', '~> 2.9', '>= 2.9.1'
+gem 'bootstrap', '~> 4.6'
+gem 'simple_form', '~> 5.1'
+gem 'hirb', '~> 0.7.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
