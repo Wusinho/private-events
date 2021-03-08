@@ -1,6 +1,15 @@
-<h1>Welcome to Eventos</h1>
 
- <% if @user %>
-    <%= @user.username %>
-    <%= button_to "Logout", logout_path, method: :delete, class:"btn btn-primary" %>
-  <% end %>
+<div class="row">
+  <div class="col-4">
+  <%= render 'form' %>
+  
+  
+  </div>
+  <div class="col-8">
+  <%= render 'feed' %>
+  
+  </div>
+
+
+
+</div>

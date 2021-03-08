@@ -1,9 +1,10 @@
 
-<h1>Events</h1>
+<h4>Current Events</h4>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
+      <th>User</th>
       <th>Title</th>
       <th>Date</th>
       <th>Location</th>
@@ -14,19 +15,26 @@
 
   <tbody>
     <% @events.each do |event| %>
+        
       <tr>
+        <td><%= event.user.username %></td>
         <td><%= event.title %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
         <td><%= event.body %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if event.user.id ==  session[:user_id] %>
+          <td><%= link_to 'Show', event %></td>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+        <% else %>
+          <td></td>
+          <td></td>
+          <td></td>
+        <% end %>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Event', new_event_path %>
