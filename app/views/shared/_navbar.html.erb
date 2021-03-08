@@ -5,10 +5,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="#">Features</a>
-      <a class="nav-link" href="#">Pricing</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+     
+<% if Current.user %>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= Current.user.username %></a>
+    <%= button_to "Sign Out", logout_path, method: :delete, class: "btn btn-secondary" %>
+  <% else %>
+    <%= button_to "Log In", sign_in_path, class: "btn btn-success" %>
+    <%= button_to "Sign Up", sign_up_path, class: "btn btn-info" %>
+
+
+<% end %>
+
+
+
+
+
     </div>
   </div>
 </nav>
