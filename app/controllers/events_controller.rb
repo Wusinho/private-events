@@ -1,27 +1,21 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  # GET /events or /events.json
   def index
     @events = Event.all.order('created_at DESC')
     @event = Event.new
   end
 
-  # GET /events/1 or /events/1.json
   def show
     @events = Event.all
-    # @event = Event.find(params[:id])
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
   def edit; end
 
-  # POST /events or /events.json
   def create
     @event = set_current_user.events.build(event_params)
 
@@ -36,7 +30,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -49,7 +42,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -60,12 +52,10 @@ class EventsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:title, :date, :location, :body)
   end
