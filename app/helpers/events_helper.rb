@@ -17,15 +17,15 @@ module EventsHelper
     content_tag(:div, flash[:alert], class: %w[alert alert-info mt-0]) if flash[:alert]
   end
 
-  def indexUser
-    if Current.user
-      content_tag :div, class: 'col-4' do
-        render 'form'
-      end
+  def index_user
+    return unless Current.user
+
+    content_tag :div, class: 'col-4' do
+      render 'form'
     end
   end
 
-  def indexSignedFC
+  def index_signedfc
     if Current.user
       content_tag :div, class: 'col-8' do
         render 'feedcurrent'
