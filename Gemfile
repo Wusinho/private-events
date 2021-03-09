@@ -25,6 +25,8 @@ gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'bootstrap', '~> 4.6'
 gem 'simple_form', '~> 5.1'
 gem 'hirb', '~> 0.7.3'
+gem 'binding_of_caller'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

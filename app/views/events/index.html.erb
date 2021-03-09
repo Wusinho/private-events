@@ -1,26 +1,26 @@
 
 
-  <% if Current.user %>
+<% if Current.user %>
     
- <div class="row">
-      <div class="col-4">
+  <div class="row">
+    <div class="col-4">
         <%= render 'form' %>
 
       </div>
 
       <div class="col-8">
-        <%= render 'feed' %>
+        <%= render 'feedcurrent' %>
+        <%= render 'feedpast' %>
       </div>
 
-
-
+<% else %>
+    <div class="col-12">
+        <%= render 'feedcurrent' %>
+        <%= render 'feedpast' %>
     </div>
-  <% else %>
-     <div class="col-12">
-        <%= render 'feed' %>
-      </div>
-   
-  <% end %>
+  </div>
+
+<% end %>
   
   
 

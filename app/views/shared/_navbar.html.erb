@@ -1,48 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a><%= link_to "Home", root_path, class: "navbar-brand" %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-        <% if Current.user %>
-          
-
-          <span class="navbar-text mr-2">
-            <%= Current.user.username %>
-          </span>
-
-          <a class="nav-item">
-          </a>
-
-          <li class="nav-item">
-            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-secondary" %> 
-          
-          </li>
-
-          <% else %>
-            <a class="nav-item">
-              <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
-            </a>
-
-            <a class="nav-link">
-              <%= link_to "Login", sign_in_path, class: "nav-link" %>
-            </a>
-
-
-          <% end %>
-
+      <%= navbar %>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 </nav>
