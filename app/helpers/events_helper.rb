@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module EventsHelper
   def navbar
     if Current.user
@@ -12,15 +10,11 @@ module EventsHelper
   end
 
   def notice
-    if flash[:notice]
-      content_tag(:div, flash[:notice], class: %w[alert alert-info mt-0])
-    end
+    content_tag(:div, flash[:notice], class: %w[alert alert-info mt-0]) if flash[:notice]
   end
 
   def alert
-    if flash[:alert]
-      content_tag(:div, flash[:alert], class: %w[alert alert-info mt-0])
-    end
+    content_tag(:div, flash[:alert], class: %w[alert alert-info mt-0]) if flash[:alert]
   end
 
   def indexUser
