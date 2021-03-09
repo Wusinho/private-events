@@ -2,16 +2,14 @@
 
 ## About
 
-The goal of this project was to understand the foundations of authentication in Ruby on Rails by creating different form layouts that ask the user for different data, so they can have their own account. We set up the user controllers, models and views with the help of the devise gem and render each using bootstrap.
+The goal of this project was to create an application using Ruby on Rails for creating events including the model structure, associations, controllers, views, validations, and authentications, stylized with Bootstrap.
 
-![screenshot](https://github.com/Wusinho/Members-only/blob/dev-MO/screen_shot.PNG)
+![screenshot](./app/assets/images/Private_events.png)
 
 ## Built with
 
 - Ruby on Rails
 - VS Code
-- Devise gem
-- Simple forms gem
 - Bootstrap
 - Rubocop
 
@@ -31,7 +29,7 @@ Run the following comands in the terminal in the next order:
   $ cd "here comes the path of your selected directory (double quotes must not be here)"
 
 - Step 2:
-  $ git clone https://github.com/Wusinho/Members-only.git
+  $ git clone https://github.com/Wusinho/private-events.git
 
 ### To run this project in your local environment
 
@@ -54,16 +52,16 @@ Run the following comands in the terminal in the next order:
 ### How to use the aplication
 
 - Step 1:
-  Create a new user by clicking the signin link at the top right corner and fill the form fields. Next, press the Sign Up link at the bottom of the page. Fill in the form fields and press the sign up link at the end
+  Create a new user by clicking the signUp link at the top right corner and fill the form field.
 
 - Step 2:
-  The next page that will open is the feed page. There you can post a new message by filling the body field with a message and then by clicking the create message link at the end.
-
-- Step 3:
-  The user's pots will appear next, and the user will see the Show, Edit and Destroy options for that specific message. Also the posts of the other members will appear along with their respective names.
+  The next page that will open is the feed page. There you can post a new Event by filling the labels.
 
 - Step 4:
-  To log out, press the sign out link in the navbar. You'll know when you are not logged in because all the member names will disappear.
+  The user's Event will appear next, and the user will see all his/her events and will be able to edit or delete them.
+
+- Step 4:
+  To log out, press the sign out link in the navbar. You'll know when you are not logged in because you can't create more events.
 
 ## Authors
 
@@ -72,17 +70,11 @@ Run the following comands in the terminal in the next order:
 - Github: [@Wusinho](https://github.com/Wusinho)
 - LinkedIn: [Heber Lazo](https://www.linkedin.com/in/heber-lazo-benza-523266133/)
 
-👤 **Alfredo Huemac**
-
-- Github: [@Huemac-Alfredo](https://github.com/Huemac-Alfredo)
-- Twitter: [@AlfredoHuemac](https://twitter.com/AlfredoHuemac)
-- Linkedin: [Alfredo Huemac Córdova](https://https://www.linkedin.com/in/alfredo-huemac/)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Wusinho/Members-only/issues).
+Feel free to check the [issues page](https://github.com/Wusinho/private-events/issues).
 
 ## Show your support
 
@@ -96,6 +88,6 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/git/git-scm.com/blob/master/MIT-LICENSE.txt) licensed.
+This project is [MIT](LICENSE.md) licensed.
 
 - ...
