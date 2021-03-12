@@ -1,4 +1,3 @@
-   <% time_now = Date.today %>
 <h4>Current Events</h4>
 
 <table class="table">
@@ -14,10 +13,11 @@
   </thead>
 
   <tbody>
+         <%= link_to "Accept",  %>
+
     <% @events.each do |event| %>
-         
         <tr>
-            <td><%= event %></td>
+                        <td><%= event.inspect %></td>
             <td><%= event.title %></td>
             <td><%= event.date %></td>
             <td><%= event.location %></td>

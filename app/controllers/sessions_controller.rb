@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def show
     if session[:set_current_user]
       @user = User.find(params[:id])
-      current_user(@user.id)
+      set_current_user(@user.id)
       @date = date_now
       @attended_events = @user.attended_events.sort { |a, b| b.date <=> a.date }
       @upcoming = @user.attended_events.upcoming

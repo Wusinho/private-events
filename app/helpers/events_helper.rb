@@ -25,18 +25,5 @@ module EventsHelper
     end
   end
 
-  def index_signedfc
-    if Current.user
-      content_tag :div, class: 'col-8' do
-        render 'feedcurrent'
-      end
 
-    else
-
-      content_tag :div, class: 'col-12' do
-        render 'feedcurrent'
-      end
-
-    end
-  end
 end
