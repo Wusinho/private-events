@@ -15,22 +15,17 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <% if time_now <= event.date  %>
          
         <tr>
-            <td><%= event.user.username %></td>
+            <td><%= event %></td>
             <td><%= event.title %></td>
             <td><%= event.date %></td>
             <td><%= event.location %></td>
             <td><%= event.body %></td>
-              <% if event.user.id ==  session[:user_id] %>
                 <td><%= link_to 'Show All', event %></td>
-              <% else %>
                 <td></td>
-              <% end %>  
         </tr>
         
-      <% end %> 
     <% end %>
   </tbody>
 </table>
@@ -51,22 +46,16 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <% if time_now > event.date  %>
          
         <tr>
-            <td><%= event.user.username %></td>
+            <td><%= event.inspect %></td>
             <td><%= event.title %></td>
             <td><%= event.date %></td>
             <td><%= event.location %></td>
             <td><%= event.body %></td>
-              <% if event.user.id ==  session[:user_id] %>
                 <td><%= link_to 'Show All', event %></td>
-              <% else %>
-                <td></td>
-              <% end %>  
         </tr>
 
-      <% end %> 
     <% end %>
   </tbody>
 </table>
