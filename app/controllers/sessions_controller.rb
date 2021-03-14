@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   
   def show
-    if session[:set_current_user]
+    if session[:current_user]
       @user = User.find(params[:id])
-      set_current_user(@user.id)
+      current_user(@user.id)
       @date = date_now
       @attended_events = @user.attended_events.sort { |a, b| b.date <=> a.date }
       @upcoming = @user.attended_events.upcoming
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(username: params[:username])
+    @user = User.find_by(username: params[:username])
 
     if user.present?
       session[:user_id] = user.id

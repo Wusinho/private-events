@@ -18,7 +18,7 @@
         
       <tr>
         <% if event.user_id ==  session[:user_id] %>
-        <%= Current.user.username %>
+        <%= @events.ids %>
         <td><%= event.title %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
