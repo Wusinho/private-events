@@ -17,7 +17,7 @@
     <% @upcoming.each do |event| %>
         
       <tr>
-
+        <td><%= event.creator.username %> </td>
         <td><%= event.title %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
@@ -50,6 +50,7 @@
         
       <tr>
         
+        <td><%= event.creator.username %> </td>
 
         <td><%= event.title %></td>
         <td><%= event.date %></td>
@@ -64,5 +65,3 @@
   </tbody>
 </table>
 
-
-<%= link_to "Back", root_path %>

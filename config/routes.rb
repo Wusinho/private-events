@@ -4,16 +4,12 @@ Rails.application.routes.draw do
   resources :events
   resources :users
   resources :attendances
+
   get 'attendances/create'
-
-
-  get 'sign_up', to: 'registrations#new'
-  post 'sign_up', to: 'registrations#create'
-
-  get 'sign_in', to: 'sessions#new'
-  post 'sign_in', to: 'sessions#create'
-
-  delete 'logout', to: 'sessions#destroy'
+  get 'sign_in', to: 'users#sign_in'
+  post 'sign_in', to: 'users#sign_in_new'
+  get 'sign_out', to: 'users#sign_out'
+  post 'sign_in', to: 'events#enroll'
 
   root 'events#index'
 end
