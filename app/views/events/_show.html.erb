@@ -17,7 +17,7 @@
     <% @upcoming.each do |event| %>
         
       <tr>
-        <%= event.user_id.user.username %>
+
         <td><%= event.title %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
@@ -49,6 +49,8 @@
     <% @past.each do |event| %>
         
       <tr>
+        
+
         <td><%= event.title %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>

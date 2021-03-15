@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    if session[:current_user]
+    if Current.user
       @event = Event.find(params[:id])
       @date = date_now
       @attendance = Attendance.new
@@ -17,8 +17,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username])
-    @event = @user.events.build(event_params)
+    #@user = User.find_by(username: params[:username])
+    @event = Current.user.events.build(event_params)
 
     if @event.save
       redirect_to events_path
