@@ -1,48 +1,52 @@
 
-<h4>ALL Events</h4>
+<div class="border bg-light text-center w-20 mx-auto my-5">
+      <h1><%= @event.title %></h1>
+</div>
+<div class="border bg-dark p-2 mx-5 mb-2">
+      <p class="text-light fs-4"><%= @event.body %></p>
+ </div>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th colspan="3"></th>
+ <div class="container">
+  <div class="row">
+    <div class="col">
+      <p>Date: <%= @event.date %></p>
+    </div>
+     <% if set_current_user%>
+    <div class="col-6 text-center">
+       <p> Attend To This Evenet Now: </p> <br>
+      
+    </div>
+    <div class="col">
+      <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post, class: "btn btn-success" %>
+       <% end %>
+    </div>
+  </div>
+</div>
+
+      
+ <table class="table mt-5">
+  <thead>
+    <tr class="text-center table-danger">
+      <th scope="col">Attendance List</th>
     </tr>
   </thead>
+<tbody>
 
-  <tbody>
-        
-      <tr>
-        <td><%= @event.title %></td>
-        <td><%= @event.date %></td>
-        <td><%= @event.location %></td>
-        <td><%= @event.body %></td>
-        <td>
-        <% if Current.user && !Current.user.attended_events.where(id: @event.id).any? %>
-
-          <%= simple_form_for(@attendance) do |f| %>
-            <%= hidden_field_tag :event_id, @event.id %>
-            <%= hidden_field_tag :user_id, Current.user.id, {id: 'user_user_id', title: 'user[user_id]'}%>
-            <%= f.button :submit, value:"Attending", class:"btn btn-primary" %>
-        <% end %>
-        <% end %>
-      </td>
-      
-      </tr>
-  </tbody>
-</table>
-
-<ul class="list-group">
-  <li class="list-group-item active">Attendants</li>
-  
   <% @event.attendee.each do |attendee| %>
-       <li class="list-group-item"><%= attendee.username %></li>
-  <% end %>
+   <tr class="text-center mb-5">
+        <td><%= attendee.username %></td>
+      <% end %>
+   </tr>
+ 
+     
+<div class="text-center">
+<% if set_current_user && set_current_user.id == @event.user_id %>
+<%= link_to 'Edit', edit_event_path(@event) , class: "btn btn-warning " %> 
+<% end %>
+<%= link_to 'Back', events_path , class: "btn btn-secondary" %>
+</div>
 
-</ul>
 
 
 
-<%= link_to "Back", root_path %>
+
