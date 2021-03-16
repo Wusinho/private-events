@@ -1,49 +1,22 @@
 
-<div class="border bg-light text-center w-20 mx-auto my-5">
-      <h1><%= @event.title %></h1>
-</div>
-<div class="border bg-dark p-2 mx-5 mb-2">
-      <p class="text-light fs-4"><%= @event.body %></p>
- </div>
 
- <div class="container">
-  <div class="row">
-    <div class="col">
-      <p>Date: <%= @event.date %></p>
-    </div>
-     <% if set_current_user%>
-    <div class="col-6 text-center">
-       <p> Attend To This Evenet Now: </p> <br>
-      
-    </div>
-    <div class="col">
-      <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post, class: "btn btn-success" %>
-       <% end %>
-    </div>
-  </div>
-</div>
 
-      
- <table class="table mt-5">
-  <thead>
-    <tr class="text-center table-danger">
-      <th scope="col">Attendance List</th>
-    </tr>
-  </thead>
-<tbody>
+<ul class="list-group mt-3">
+  <li class="list-group-item active"><%= @event.title %></li>
 
   <% @event.attendee.each do |attendee| %>
    <tr class="text-center mb-5">
-        <td><%= attendee.username %></td>
+        <li class="list-group-item"><%= attendee.username %></li>
       <% end %>
    </tr>
  
-     
+</ul>
+
 <div class="text-center">
 <% if set_current_user && set_current_user.id == @event.user_id %>
 <%= link_to 'Edit', edit_event_path(@event) , class: "btn btn-warning " %> 
 <% end %>
-<%= link_to 'Back', events_path , class: "btn btn-secondary" %>
+<%= link_to 'Back', events_path , class: "btn btn-secondary mt-4" %>
 </div>
 
 
