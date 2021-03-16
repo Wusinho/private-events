@@ -23,14 +23,15 @@
 
        <% if set_current_user  && set_current_user.id == event.user_id %>
         <td class="text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td class="text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
         <% else %>
         <td></td>
         <td></td>
-      <% end %>
+        <% end %>
         <% if set_current_user && !set_current_user.attended_events.where(id: event.id).any? %>
 
           <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post, class: "btn btn-success" %></td>
+          <td></td>
           <% else %>
           <td><button type="button" class="btn btn-light btn-sm disabled">Already attending</button></td>
 
@@ -63,13 +64,8 @@
       <td class="text-center"><%= link_to event.title, event %></td>
       <td><%= event.date %></td>
 
-       <% if set_current_user  && set_current_user.id == event.user_id %>
-        <td class="text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td class="text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-        <td></td>
-        <td></td>
-      <% end %>
+      
+      
        
     <% end %>
    </tr>
