@@ -1,7 +1,6 @@
 require 'date'
 
 class UsersController < ApplicationController
-
   def index
     @Users = User.all
   end
@@ -60,11 +59,9 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Logged out'
   end
 
-private
+  private
 
-def user_params
-  params.require(:user).permit(:username)
-end
-
-
+  def user_params
+    params.require(:user).permit(:username)
+  end
 end
