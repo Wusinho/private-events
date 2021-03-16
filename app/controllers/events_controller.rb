@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    if Current.user.id
+    if session[:user_id]
       @event = Event.find_by(params[:id])
       @date = date_now
       @attendance = Attendance.new

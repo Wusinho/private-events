@@ -20,15 +20,29 @@
         <td><%= @event.location %></td>
         <td><%= @event.body %></td>
         <td>
+        <% if Current.user && !Current.user.attended_events.where(id: @event.id).any? %>
+
           <%= simple_form_for(@attendance) do |f| %>
             <%= hidden_field_tag :event_id, @event.id %>
             <%= hidden_field_tag :user_id, Current.user.id, {id: 'user_user_id', title: 'user[user_id]'}%>
-            <%= f.button :submit, class:"btn btn-primary" %>
+            <%= f.button :submit, value:"Attending", class:"btn btn-primary" %>
+        <% end %>
         <% end %>
       </td>
       
       </tr>
   </tbody>
 </table>
+
+<ul class="list-group">
+  <li class="list-group-item active">Attendants</li>
+  
+  <% @event.attendee.each do |attendee| %>
+       <li class="list-group-item"><%= attendee.username %></li>
+  <% end %>
+
+</ul>
+
+
 
 <%= link_to "Back", root_path %>
