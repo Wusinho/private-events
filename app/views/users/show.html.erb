@@ -1,0 +1,77 @@
+
+
+<table class="table">
+
+
+    <% if @my_events.any? %>
+  <h1>Current Events</h1>
+    
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">TOday</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  
+          <% @my_events.each do |event| %>
+    <tr>
+    <% if DateTime.now.utc <= event.date %>
+       <td><%= link_to  event.title, event_path(event.id) %></td>
+      <td><%= event.date %></td>
+      <td><%= @date %></td>
+    <% end %>
+     
+    </tr>
+    <% end %>
+    <% else %>
+
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">No events</h1>
+  </div>
+</div>
+    <% end %>
+  </tbody>
+     
+</table>
+
+
+<table class="table">
+
+
+    <% if @my_events.any? %>
+  <h1>Past Events</h1>
+    
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">TOday</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  
+          <% @my_events.each do |event| %>
+    <tr>
+    <% if DateTime.now.utc > event.date %>
+       <td><%= link_to  event.title, event_path(event.id) %></td>
+      <td><%= event.date %></td>
+      <td><%= @date %></td>
+    <% end %>
+     
+    </tr>
+    <% end %>
+ 
+</div>
+    <% end %>
+  </tbody>
+     
+</table>
+
+
+
+  

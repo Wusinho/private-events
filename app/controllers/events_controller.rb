@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
       @date = date_now
       @attendance = Attendance.new
-      @users_not_in = User.all.where.not(id: @event.attendee).where.not(id: session[:current_user]['id'])
+      @users_not_in = User.all.where.not(id: @event.attendee).where.not(id: Current.user.id)
     else
       redirect_to sign_in_path
     end
