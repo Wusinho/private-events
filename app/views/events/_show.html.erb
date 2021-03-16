@@ -18,20 +18,22 @@
         
       <tr>
         <td><%= event.creator.username %> </td>
-        <td><%= event.title %></td>
+        <td>
+        <%= link_to event.title, event_path(event.id) %>
+        
+        </td>
+
         <td><%= event.date %></td>
         <td><%= event.location %></td>
         <td><%= event.body %></td>
-       
+        <td>  
+        
+        </td>
     
         
       </tr>
     <% end %>
-      <%= simple_form_for(@attendance) do |f| %>
-            <%= hidden_field_tag :event_id, @event.id %>
-            <%=hidden_field_tag :user_id, Current.user.id, {id: 'user_user_id', name: 'user[user_id]'}%>
-            <%= f.button :submit, class: "button is-danger" %>
-          <% end %>
+   
   </tbody>
 </table>
 

@@ -6,8 +6,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    if Current.user
-      @event = Event.find(params[:id])
+    if Current.user.id
+      @event = Event.find_by(params[:id])
       @date = date_now
       @attendance = Attendance.new
       @users_not_in = User.all.where.not(id: @event.attendee).where.not(id: Current.user.id)
