@@ -1,4 +1,4 @@
-module EventsHelper 
+module EventsHelper
   include UsersHelper
   def navbar
     if Current.user
@@ -44,7 +44,4 @@ module EventsHelper
   def editevent
     link_to('Edit', edit_event_path(@event), class: 'btn btn-warning') if set_current_user && set_current_user.id == @event.user_id
   end
-
- 
-
 end
