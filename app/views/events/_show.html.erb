@@ -30,7 +30,7 @@
         <% end %>
         <% if set_current_user && !set_current_user.attended_events.where(id: event.id).any? %>
 
-          <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post, class: "btn btn-success" %></td>
+          <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post, class: "btn btn-success btn-sm" %></td>
           <td></td>
           <% else %>
           <td><button type="button" class="btn btn-light btn-sm disabled">Already attending</button></td>
