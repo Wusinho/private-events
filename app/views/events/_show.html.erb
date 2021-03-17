@@ -13,13 +13,13 @@
 <tbody>
 
   <% @upcoming.each do |event| %>
-      <tr class="text-center">
+    <tr class="text-center">
 
       <td class="text-center"><%= event.creator.username %></td>
       <td class="text-center"><%= link_to event.title, event %></td>
       <td><%= event.date %></td>
 
-       <% if set_current_user  && set_current_user.id == event.user_id %>
+      <% if set_current_user  && set_current_user.id == event.user_id %>
         <td class="text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
         <td></td>
         <% else %>
@@ -27,16 +27,14 @@
         <td></td>
         <% end %>
         <% if set_current_user && !set_current_user.attended_events.where(id: event.id).any? %>
-
-          <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post, class: "btn btn-success btn-sm" %></td>
-          <td></td>
+            <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post, class: "btn btn-success btn-sm" %></td>
+            <td></td>
           <% else %>
-          <td><button type="button" class="btn btn-light btn-sm disabled">Already attending</button></td>
-
-    <% end %>
+            <td><button type="button" class="btn btn-light btn-sm disabled">Already attending</button></td>
+      <% end %>
    </tr>
 
-    <% end %>
+  <% end %>
 </tbody>
 </table>
 
@@ -48,21 +46,15 @@
       <th scope="col">Event Title</th>
       <th scope="col">Event Date</th>
       <th colspan="3"></th>
-     
     </tr>
   </thead>
 <tbody>
 
   <% @past.each do |event| %>
       <tr class="text-center">
-
       <td class="text-center"><%= event.creator.username %></td>
       <td class="text-center"><%= link_to event.title, event %></td>
       <td><%= event.date %></td>
-
-      
-      
-       
     <% end %>
    </tr>
   </tbody>

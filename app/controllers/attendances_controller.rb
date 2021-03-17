@@ -3,20 +3,16 @@ class AttendancesController < ApplicationController
     @attendances = Attendance.all
   end
 
-  # GET /events/1 or /events/1.json
   def show
     @attendances = Attendance.find(:id)
   end
 
-  # GET /events/new
   def new
     @attendances = Attendance.new(attendances_params)
   end
 
-  # GET /events/1/edit
   def edit; end
 
-  # POST /events or /events.json
   def create
     @attendances = Attendance.new(user_id: set_current_user.id, event_id: params[:event_id])
 
@@ -32,7 +28,6 @@ class AttendancesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     respond_to do |format|
       if @attendances.update(attendances_params)
@@ -45,7 +40,6 @@ class AttendancesController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     @attendances.destroy
     respond_to do |format|
@@ -56,14 +50,11 @@ class AttendancesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @attendances = Attendances.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def attendances_params
-    # params.fetch(:event, {})
     params.require(:attendances).permit(:user_id, :event_id)
   end
 end
