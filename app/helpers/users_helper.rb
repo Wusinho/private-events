@@ -24,4 +24,16 @@ module UsersHelper
     end
   end
 
+
+def events
+  if @my_events.any?
+    render 'cevents' 
+  
+    else
+    render 'jumbo'
+  
+  end
+end
+  
+
 end
