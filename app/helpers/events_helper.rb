@@ -26,4 +26,36 @@ module EventsHelper
       render 'form'
     end
   end
+
+  def edit(event)
+    if set_current_user  && set_current_user.id == event.user_id
+      content_tag(:td, link_to('Edit', edit_event_path(event)), class: 'text-center' ) +
+      content_tag(:td)
+    else
+      content_tag(:td) +
+      content_tag(:td)
+    end
+  end
+
+  def button(event)
+    if set_current_user && !set_current_user.attended_events.where(id: event.id).any?
+      content_tag(:td, link_to('Attend', attendances_path(event_id: event.id), method: :post, class: 'btn btn-success btn-sm'), class: 'text-center' ) +
+      content_tag(:td)
+
+    elsif set_current_user
+      content_tag(:td, content_tag(:button,'Already attending', class: 'btn btn-light btn-sm disabled'), class: 'text-center' ) 
+
+     else
+    end
+  end
+
+  def editevent
+    if set_current_user && set_current_user.id == @event.user_id
+      link_to('Edit', edit_event_path(@event), class: "btn btn-warning")
+    end
+  
+  end
+
+
+
 end

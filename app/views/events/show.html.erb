@@ -13,13 +13,7 @@
 </ul>
 
 <div class="text-center">
-<% if set_current_user && set_current_user.id == @event.user_id %>
-<%= link_to 'Edit', edit_event_path(@event) , class: "btn btn-warning " %> 
-<% end %>
+<%= editevent %>
 <%= link_to 'Back', events_path , class: "btn btn-secondary mt-4" %>
 </div>
-
-
-
-
 
