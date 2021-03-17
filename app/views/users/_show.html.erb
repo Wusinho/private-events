@@ -1,0 +1,19 @@
+<table class="table">
+
+    <h1>Current Events</h1>
+    
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @my_events.each do |event| %>
+        <tr>
+        <%= userl(event) %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
