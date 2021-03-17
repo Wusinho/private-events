@@ -1,0 +1,15 @@
+<h3>Create a new Event</h3>
+
+<%= simple_form_for(@event) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :date %>
+    <%= f.input :location %>
+    <%= f.input :body %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:"btn btn-primary" %>
+  </div>
+<% end %>
