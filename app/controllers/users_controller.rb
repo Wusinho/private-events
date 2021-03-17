@@ -40,14 +40,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'Logged in succesfully'
     else
-      flash[:alert] = 'Invalid Username'
-      render :new
-
+      redirect_to new_user_path, notice: 'Please create a Username'
     end
   end
 
   def sign_in
-    redirect_to root_path if Current.user
+      redirect_to root_path if Current.user
+
   end
 
   def sign_out

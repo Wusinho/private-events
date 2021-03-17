@@ -1,4 +1,3 @@
-   <% time_now = DateTime.now.utc %>
 
 <h1 class="mt-5 text-center text-success">Upcoming Events </h1>
   <table class="table">
@@ -13,8 +12,7 @@
   </thead>
 <tbody>
 
-  <% @events.each do |event| %>
-    <% if time_now <= event.date %>
+  <% @upcoming.each do |event| %>
       <tr class="text-center">
 
       <td class="text-center"><%= event.creator.username %></td>
@@ -35,7 +33,6 @@
           <% else %>
           <td><button type="button" class="btn btn-light btn-sm disabled">Already attending</button></td>
 
-        <% end %>
     <% end %>
    </tr>
 
@@ -56,8 +53,7 @@
   </thead>
 <tbody>
 
-  <% @events.each do |event| %>
-    <% if time_now > event.date %>
+  <% @past.each do |event| %>
       <tr class="text-center">
 
       <td class="text-center"><%= event.creator.username %></td>
@@ -69,7 +65,5 @@
        
     <% end %>
    </tr>
-
-    <% end %>
   </tbody>
 </table>

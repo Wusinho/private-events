@@ -1,15 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  # GET /events or /events.json
   def index
     @events = Event.all
+    @upcoming = Event.upcoming.sort { |a, b| a.date <=> b.date }
+    @past = Event.past.sort { |a, b| b.date <=> a.date }
   end
 
-  # GET /events/1 or /events/1.json
   def show; end
 
-  # GET /events/new
   def new
     if set_current_user.nil?
       flash.alert = 'You have to login first'
@@ -19,12 +18,10 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1/edit
   def edit; end
 
-  # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    @event = set_current_user.events.build(event_params)
 
     respond_to do |format|
       if @event.save
@@ -37,7 +34,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -50,7 +46,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -61,14 +56,11 @@ class EventsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
-    # params.fetch(:event, {})
     params.require(:event).permit(:title, :body, :date, :location).merge(user_id: set_current_user.id)
   end
 end
