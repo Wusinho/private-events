@@ -45,8 +45,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in
-      redirect_to root_path if Current.user
-
+    redirect_to root_path if Current.user
   end
 
   def sign_out

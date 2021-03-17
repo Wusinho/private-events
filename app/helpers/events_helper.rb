@@ -19,43 +19,28 @@ module EventsHelper
     content_tag(:div, flash[:alert], class: %w[alert alert-info mt-0]) if flash[:alert]
   end
 
-  def index_user
-    return unless Current.user
-
-    content_tag :div, class: 'col-4' do
-      render 'form'
-    end
-  end
-
   def edit(event)
-    if set_current_user  && set_current_user.id == event.user_id
-      content_tag(:td, link_to('Edit', edit_event_path(event)), class: 'text-center' ) +
-      content_tag(:td)
+    if set_current_user && set_current_user.id == event.user_id
+      content_tag(:td, link_to('Edit', edit_event_path(event)), class: 'text-center') +
+        content_tag(:td)
     else
       content_tag(:td) +
-      content_tag(:td)
+        content_tag(:td)
     end
   end
 
   def button(event)
-    if set_current_user && !set_current_user.attended_events.where(id: event.id).any?
-      content_tag(:td, link_to('Attend', attendances_path(event_id: event.id), method: :post, class: 'btn btn-success btn-sm'), class: 'text-center' ) +
-      content_tag(:td)
+    if set_current_user && set_current_user.attended_events.where(id: event.id).none?
+      content_tag(:td, link_to('Attend', attendances_path(event_id: event.id), method: :post, class: 'btn btn-success btn-sm'), class: 'text-center') +
+        content_tag(:td)
 
     elsif set_current_user
-      content_tag(:td, content_tag(:button,'Already attending', class: 'btn btn-light btn-sm disabled'), class: 'text-center' ) 
+      content_tag(:td, content_tag(:button, 'Already attending', class: 'btn btn-light btn-sm disabled'), class: 'text-center')
 
-     else
     end
   end
 
   def editevent
-    if set_current_user && set_current_user.id == @event.user_id
-      link_to('Edit', edit_event_path(@event), class: "btn btn-warning")
-    end
-  
+    link_to('Edit', edit_event_path(@event), class: 'btn btn-warning') if set_current_user && set_current_user.id == @event.user_id
   end
-
-
-
 end
